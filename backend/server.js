@@ -11,7 +11,14 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(require("./routes/record"));
+// middleware reporting reqs and stuff
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
+
+
+app.use(require("./routes/records"));
 
 // Get MongoDB driver connection
 // const dbo = require("./db/conn");
