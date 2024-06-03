@@ -1,4 +1,5 @@
 import React from "react";
+ import Main from '../src/Main.css'
  
 // We use Route in order to define the different routes of our application
 import { Route, Routes } from "react-router-dom";
@@ -8,7 +9,9 @@ import Navbar from "./components/navbar";
 import RecordList from "./components/recordList";
 import Edit from "./components/edit";
 import Create from "./components/create";
- 
+import WebSocketTest from './components/websockettest'
+
+
 const App = () => {
  return (
    <div>
@@ -17,6 +20,8 @@ const App = () => {
        <Route exact path="/" element={<RecordList />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} />
+       <Route path="/socket" element={<WebSocketTest />} />
+
      </Routes>
    </div>
  );
