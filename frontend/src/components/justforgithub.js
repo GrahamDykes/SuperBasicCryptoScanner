@@ -13,13 +13,19 @@ export default function Git() {
     // let isObject = (typeof testObj == 'object')
     // console.log("isObject: ", isObject);
 
-    console.log('\n')
-    console.log('Number: ',typeof 4)
-    console.log('String: ',typeof 'legs')
-    console.log('Object: ',typeof {'legs':4})
-    console.log('Array: ',typeof [4,5,6])
-    console.log('\n')
-console.log('Typeof typof: ', typeof (typeof 4))
+//     console.log('\n')
+//     console.log('Number: ',typeof 4)
+//     console.log('String: ',typeof 'legs')
+//     console.log('Object: ',typeof {'legs':4})
+//     console.log('Array: ',typeof [4,5,6])
+//     console.log('\n')
+// console.log('Typeof typof: ', typeof (typeof 4))
+
+var isRaining = true;
+
+if (isRaining === true) {
+  console.log("you should wear a raincoat");
+}
 
  return (
    <div>
