@@ -16,6 +16,10 @@ export default function Navbar() {
        </NavLink>
        <NavLink className="navbar-brand" to="/socket">Crypto
        </NavLink>
+       <NavLink className="navbar-brand" to="/variable">VariableTesting
+       </NavLink>
+       <NavLink className="navbar-brand" to="/github">ConsoleTesting
+       </NavLink>
        <button
          className="navbar-toggler"
          type="button"
