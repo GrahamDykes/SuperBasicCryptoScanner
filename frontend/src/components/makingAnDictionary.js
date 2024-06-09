@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
  
-export default function variableTesting() {
+export default function makingAnDictionary() {
  
 
 

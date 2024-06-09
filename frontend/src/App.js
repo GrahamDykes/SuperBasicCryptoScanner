@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line
  import Main from '../src/Main.css'
 
 // We use Route in order to define the different routes of our application
@@ -10,7 +11,7 @@ import RecordList from "./components/recordList";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import WebSocketTest from './components/websockettest'
-import VariableTesting from './components/variableTesting'
+import DictionaryMaker from './components/makingAnDictionary'
 import Git from './components/justforgithub'
 
 const App = () => {
@@ -22,7 +23,7 @@ const App = () => {
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} />
        <Route path="/socket" element={<WebSocketTest />} />
-       <Route path="/variable" element={<VariableTesting />} />
+       <Route path="/variable" element={<DictionaryMaker />} />
        <Route path="/github" element={<Git />} />
 
      </Routes>

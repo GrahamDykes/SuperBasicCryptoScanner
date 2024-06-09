@@ -16,7 +16,7 @@ export default function Navbar() {
        </NavLink>
        <NavLink className="navbar-brand" to="/socket">Crypto
        </NavLink>
-       <NavLink className="navbar-brand" to="/variable">VariableTesting
+       <NavLink className="navbar-brand" to="/variable">DictionaryMaker
        </NavLink>
        <NavLink className="navbar-brand" to="/github">ConsoleTesting
        </NavLink>
