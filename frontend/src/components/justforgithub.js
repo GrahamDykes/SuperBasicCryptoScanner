@@ -7,6 +7,46 @@ export default function Git() {
     // console.log('\x1b[31m','\x1b[40m', 'I am Red on Black');  //red on black
 
 
+    function greetCustomer(firstName) {
+        var customerData = {
+          'Joe': {
+            visits: 1
+          },
+          'Carol': {
+            visits: 2
+          },
+          'Howard': {
+            visits: 3,
+          },
+          'Carrie': {
+            visits: 4
+          }
+        };
+        console.log(chalk.bold.yellow(`firstName: ${firstName}`))
+        console.log("customerData[firstName]: ", customerData[firstName]);
+        console.log("customerData[firstName][visits]: ", customerData[firstName].visits);
+        
+
+        //   if(customerData[firstName][visits]==0){
+        //       return 'Welcome! Is this your first time?'
+        //   }
+        //   if(customerData[firstName][visits]==1){
+        
+        //       return `Welcome back, ${firstName}! We're glad you liked us the first time!`
+        //   }
+        //   if(customerData[firstName][visits]>1){
+       
+        //       return `Welcome back, ${firstName}! So glad to see you again!`
+        //   }
+          
+          
+          
+          
+          
+        }
+
+
+        greetCustomer('Joe')
 
 
 
@@ -15,16 +55,37 @@ export default function Git() {
 
 
 
-let testArr= [0,1,2,3,4,5,6,7]
-console.log(chalk.cyan.bold("testArr: ", testArr))
-// testArr.splice(3,0,'X','Y','Z')
-console.log("testArr.splice(3,2,'X','Y','Z'): ", testArr.splice(3,2,'X','Y','Z'));
-console.log(chalk.green.bold("testArr: ", testArr))
 
 
 
-    var answer = 4;
-    console.log(chalk.red.bold('should be true:', answer === 4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
