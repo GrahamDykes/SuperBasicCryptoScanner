@@ -1,31 +1,35 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { NavLink } from "react-router-dom";
  
-// Here, we display our Navbar
+
 export default function Git() {
 
 
-    // let testObj = {'legs': 2}
-    // console.log('\n')
-    // console.log(typeof testObj)
-    // console.log('\n')
-    // let isObject = (typeof testObj == 'object')
-    // console.log("isObject: ", isObject);
-
-//     console.log('\n')
-//     console.log('Number: ',typeof 4)
-//     console.log('String: ',typeof 'legs')
-//     console.log('Object: ',typeof {'legs':4})
-//     console.log('Array: ',typeof [4,5,6])
-//     console.log('\n')
-// console.log('Typeof typof: ', typeof (typeof 4))
-
-var isRaining = true;
-
-if (isRaining === true) {
-  console.log("you should wear a raincoat");
+let testObj = {
+    'head': 'big',
+    'teeth': 25,
+    'chin' : 'square',
+    eyes:'two',
+    hair: 'blonde',
+    6: 'car',
+    7: 98,
 }
+for(let x in testObj){
+    console.log('X: ',x)
+    console.log('testObj[x]', testObj[x])
+    
+    console.log('typeof:', typeof x)
+    console.log('-------\n')
+}
+
+
+
+
+
+
+
+
+
 
  return (
    <div>
