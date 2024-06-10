@@ -7,57 +7,21 @@ export default function Git() {
     // console.log('\x1b[31m','\x1b[40m', 'I am Red on Black');  //red on black
 
 
-    function greetCustomer(firstName) {
-        var customerData = {
-          'Joe': {
-            visits: 1
-          },
-          'Carol': {
-            visits: 2
-          },
-          'Howard': {
-            visits: 3,
-          },
-          'Carrie': {
-            visits: 4
-          }
-        };
-        console.log(chalk.bold.yellow(`firstName: ${firstName}`))
-        console.log("customerData[firstName]: ", customerData[firstName]);
-        console.log("customerData[firstName][visits]: ", customerData[firstName].visits);
-        
-
-        //   if(customerData[firstName][visits]==0){
-        //       return 'Welcome! Is this your first time?'
-        //   }
-        //   if(customerData[firstName][visits]==1){
-        
-        //       return `Welcome back, ${firstName}! We're glad you liked us the first time!`
-        //   }
-        //   if(customerData[firstName][visits]>1){
-       
-        //       return `Welcome back, ${firstName}! So glad to see you again!`
-        //   }
-          
-          
-          
-          
-          
+    
+    function assertArraysEqual(actual, expected, testName) {
+        // your code here
+        if(actual.every((e,i)=>e===expected[i])){
+            // console.log(chalk.blue(`e: ${e}`))
+            // console.log(chalk.yellow(`expected[i]: ${expected[i]}`))
+            console.log("passed")
+        }else{
+             console.log(`FAILED [${testName}] Expected "${expected}", but got "${actual}"`)
         }
-
-
-        greetCustomer('Joe')
-
-
-
-
-
-
-
-
-
-
-
+    }
+   
+var array1 = ['a', 'b', 'c','d'];
+var array2 = ['a', 'b', 'c','e'];
+console.log(chalk.red.bold(assertArraysEqual(array1,array2,'derp derp derp')))
 
 
 
