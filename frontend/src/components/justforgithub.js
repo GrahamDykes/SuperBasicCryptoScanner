@@ -23,27 +23,22 @@ export default function Git() {
         }
       ];
 
-    function renderInventory(inventory) {
-        //we going to loop through the MAIN array
-        //grabbing each item from each designer
-        //throwing it into a master string
-        let masterString= ""
-        for(let obj in inventory){
-            for(let i = 0; i<inventory[obj].shoes.length;i++){
-                // console.log(`${inventory[obj].name}, ${inventory[obj].shoes[i].name}, ${inventory[obj].shoes[i].price}`)
-                console.log(`${inventory[obj].shoes[i].name.split(" ").includes('black')}`)
-                masterString+=`${inventory[obj].name}, ${inventory[obj].shoes[i].name}, ${inventory[obj].shoes[i].price}\n`
+      function listAllBlackShoes(inventory) {
+        let masterString = ""
+        
+        for(let i = 0; i<inventory.length;i++){
+            for(let j = 0; j<inventory[i].shoes.length;j++){
+                if(inventory[i].shoes[j].name.split(" ").includes('black')){
+                    masterString+=`${inventory[i].name}, ${inventory[i].shoes[j].name}, ${inventory[i].shoes[j].price}\n`
+                }
             }
         }
-        // for(let obj in inventory){
-        //     for(let i = 0; i<inventory[obj].shoes.length;i++){
-        //         console.log(`${inventory[obj].name}, ${inventory[obj].shoes[i].name}, ${inventory[obj].shoes[i].price}`)
-        //         masterString+=`${inventory[obj].name}, ${inventory[obj].shoes[i].name}, ${inventory[obj].shoes[i].price}\n`
-        //     }
-        // }
+        
+        console.log(masterString)
         return masterString
+        
         }
-        renderInventory(currentInventory)
+        listAllBlackShoes(currentInventory)
         //Create helper functions if needed
 
 
