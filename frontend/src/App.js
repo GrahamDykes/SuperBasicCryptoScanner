@@ -12,7 +12,8 @@ import Edit from "./components/edit";
 import Create from "./components/create";
 import WebSocketTest from './components/websockettest'
 import DictionaryMaker from './components/makingAnDictionary'
-import Git from './components/justforgithub'
+import CryptoAPI from './components/cryptoAPItest'
+import GPT from './components/gptMadeTicker'
 
 const App = () => {
  return (
@@ -23,8 +24,10 @@ const App = () => {
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} />
        <Route path="/socket" element={<WebSocketTest />} />
+       <Route path="/api" element={<CryptoAPI />} />
        <Route path="/variable" element={<DictionaryMaker />} />
-       <Route path="/github" element={<Git />} />
+       <Route path="/gpt" element={<GPT />} />
+       
 
      </Routes>
    </div>
