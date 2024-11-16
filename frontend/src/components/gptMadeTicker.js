@@ -8,12 +8,17 @@ const CryptoTicker = () => {
 
   // Function to fetch ticker data
   const fetchTickers = async () => {
-    // const apiUrl = "https://api.crypto.com/v2/public/get-ticker";
-    const apiUrl = "https://api.crypto.com/v1/symbols";
+    // const apiUrl = "https://api.crypto.com/v1/symbols";           //gets all symbols
+    const apiUrl = "https://api.crypto.com/v1/ticker";           //gets all symbols
+
 
     try {
       setLoading(true);
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl,{
+
+        symbol: 'BTCUSDT' // Replace with desired symbol
+    
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -21,12 +26,13 @@ const CryptoTicker = () => {
 
       const data = await response.json();
 
-      if (data.code !== 0) {
-        throw new Error(`API error: ${data.message}`);
-      }
-
-      setTickers(data.result.data);
+    //   if (data.code !== 0) {
+    //     throw new Error(`API error: ${data.message}`);
+    //   }
+console.log("DATA.data:\n", data.data)
+      setTickers(data.data);
     } catch (err) {
+        console.log("error:",err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -60,7 +66,7 @@ const CryptoTicker = () => {
           <tbody>
             {tickers.map((ticker) => (
               <tr key={ticker.i}>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{ticker.i}</td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>{ticker.symbol}</td>
                 <td style={{ border: "1px solid #ddd", padding: "8px" }}>{ticker.a}</td>
               </tr>
             ))}
