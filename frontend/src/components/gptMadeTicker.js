@@ -187,6 +187,7 @@ const CryptoPricesTable = () => {
 
       const data = await response.json();
       console.log("Comparison Inbound!", data);
+      setData(data);
     } catch (error) {
       console.error("Error Comparing prices:", error);
       alert("Failed to compare prices. Check the console for more details.");
