@@ -21,9 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  
-    "proxy": "https://api.crypto.com",
-  
+  "proxy": "https://api.crypto.com",
   "eslintConfig": {
     "extends": [
       "react-app",

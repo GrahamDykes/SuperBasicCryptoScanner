@@ -16,7 +16,7 @@
   // Function to fetch ticker data
 //   const fetchTickers = async () => {
 //     const apiUrl = "https://api.crypto.com/v1/symbols";         //gets all symbols
-//     // const apiUrl = "https://api.crypto.com/v1/ticker";       //gets all symbols
+//     // const apiUrl = "https://api.crypto.com/v1/ticker";       //gets all symbols & prices
 
 
 //     try {
