@@ -9,7 +9,7 @@ const Record = (props) => (
    <td>
      <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
      <button className="btn btn-link"
-       onClick={() => {
+        onClick={() => {
          props.deleteRecord(props.record._id);
        }}
      >
