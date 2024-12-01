@@ -18,6 +18,8 @@ export default function Navbar() {
        </NavLink>
        <NavLink className="navbar-brand" to="/variable">DictionaryMaker
        </NavLink>
+       <NavLink className="navbar-brand" to="/arbitrage">Arbitrage
+       </NavLink>
        <NavLink className="navbar-brand" to="/api">API
        </NavLink>
        <NavLink className="navbar-brand" to="/gpt">GPT

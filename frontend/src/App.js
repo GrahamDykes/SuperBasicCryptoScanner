@@ -14,6 +14,7 @@ import WebSocketTest from './components/websockettest'
 import DictionaryMaker from './components/makingAnDictionary'
 import CryptoAPI from './components/cryptoAPItest'
 import GPT from './components/gptMadeTicker'
+import Arbitrage from './components/arbitrage'
 
 const App = () => {
  return (
@@ -27,6 +28,8 @@ const App = () => {
        <Route path="/api" element={<CryptoAPI />} />
        <Route path="/variable" element={<DictionaryMaker />} />
        <Route path="/gpt" element={<GPT />} />
+       
+       <Route path="/arbitrage" element={<Arbitrage />} />
        
 
      </Routes>

@@ -37,12 +37,12 @@ export default function RecordList() {
      setRecords(records);
    }
  
-   getRecords();
+  //  getRecords();
  
    return;
  }, [records.length]);
  
- // This method will delete a record
+//  // This method will delete a record
  async function deleteRecord(id) {
    await fetch(`http://localhost:5000/${id}`, {
      method: "DELETE"
@@ -52,7 +52,7 @@ export default function RecordList() {
    setRecords(newRecords);
  }
  
- // This method will map out the records on the table
+//  // This method will map out the records on the table
  function recordList() {
    return records.map((record) => {
      return (
@@ -69,7 +69,7 @@ export default function RecordList() {
  return (
    <div>
      <h3>Record List</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
+     {/* <table className="table table-striped" style={{ marginTop: 20 }}>
        <thead>
          <tr>
            <th>Name</th>
@@ -79,7 +79,7 @@ export default function RecordList() {
          </tr>
        </thead>
        <tbody>{recordList()}</tbody>
-     </table>
+     </table> */}
    </div>
  );
 }
