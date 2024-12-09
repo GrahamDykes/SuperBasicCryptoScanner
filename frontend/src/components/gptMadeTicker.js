@@ -194,6 +194,24 @@ const CryptoPricesTable = () => {
     }
   };
 
+  const handleUpdateClick = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/update-prices", {
+        method: "GET",
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // const data = await response.json();
+      console.log("updated?");
+      
+    } catch (error) {
+      console.error("Error Updating prices:", error);
+      alert("Failed to Update prices. Check the console for more details.");
+    }
+  };
   return (
     <div>
       <h1>Crypto Prices</h1>
@@ -209,6 +227,12 @@ const CryptoPricesTable = () => {
       >
         -Compare Prices-
       </button>
+      <button
+        onClick={handleUpdateClick}
+        style={{ padding: "10px 20px", fontSize: "16px" }}
+      >
+        -Update Prices-
+      </button>
       {loading && <p>Loading data...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
       {!loading && !error && (
@@ -223,7 +247,8 @@ const CryptoPricesTable = () => {
             {data.map((item, index) => (
               <tr key={index}>
                 <td>{item.symbol}</td>
-                <td>{parseFloat(item.price).toFixed(2)}</td>
+                {/* <td>{parseFloat(item.price).toFixed(2)}</td> */}
+                <td>{parseFloat(item.price)}</td>
               </tr>
             ))}
           </tbody>

@@ -12,11 +12,12 @@ export default function Cryptoapi() {
     const intervalId = setInterval(() => {
       setTime(new Date()); // Update state every minute
       setCounter(counter + 1);
-    }, 60000);
+
+    }, 600);
 
     
     return () => clearInterval(intervalId);
-  }, []);
+  }, [counter]);
 
   return (
     <div>

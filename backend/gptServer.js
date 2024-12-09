@@ -51,8 +51,9 @@ console.log('WORKING RESULT\n\n', result)
 
     const tickers = result.result.data.map((ticker) => ({
       symbol: ticker.i,
-      price: parseFloat(ticker.a),
-      timestamp: new Date(),
+      cost: [[parseFloat(ticker.a),new Date()]]
+      // price: parseFloat(ticker.a),
+      // timestamp: new Date(),
     }));
 
     // Save to MongoDB
@@ -66,6 +67,42 @@ console.log('WORKING RESULT\n\n', result)
   }
 });
 
+app.get("/update-prices", async (req, res) => {
+  try {
+    const url = "https://api.crypto.com/v2/public/get-ticker";
+    const response = await fetch(url);
+    const result = await response.json();
+
+console.log('WORKING RESULT\n\n', result)
+
+    if (result.code !== 0) {
+      return res.status(500).json({ error: "Failed to UPDATE crypto prices" });
+    }
+
+    const tickers = result.result.data.map((ticker) => ({
+      symbol: ticker.i,
+      cost: [parseFloat(ticker.a),new Date()]
+    }));
+
+    // Save to MongoDB
+    const collection = db.collection("crypto_dot_com");
+    
+    for(let i = 0; i < tickers.length;i++){
+
+      await collection.findOneAndUpdate({symbol:tickers[i].symbol},{$push:{cost:tickers[i].cost}} ,{returnNewDocument:true});
+
+
+    }
+    
+    
+
+    // res.status(200).json({ message: "Data updated successfully", tickers });
+    res.status(200).json({ message: "Data updated successfully"});
+  } catch (error) {
+    console.error("Error updating prices:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 // Compare prices (fetch latest from MongoDB)
 app.get("/compare-prices", async (req, res) => {
   try {
