@@ -43,7 +43,7 @@ app.get("/save-prices", async (req, res) => {
     const response = await fetch(url);
     const result = await response.json();
 
-console.log('WORKING RESULT\n\n', result)
+    console.log("WORKING RESULT\n\n", result);
 
     if (result.code !== 0) {
       return res.status(500).json({ error: "Failed to fetch crypto prices" });
@@ -51,9 +51,35 @@ console.log('WORKING RESULT\n\n', result)
 
     const tickers = result.result.data.map((ticker) => ({
       symbol: ticker.i,
-      cost: [[parseFloat(ticker.a),new Date()]]
+      cost: [[parseFloat(ticker.a), new Date()]],
       // price: parseFloat(ticker.a),
       // timestamp: new Date(),
+    }));
+    // Save to MongoDB
+    const collection = db.collection("crypto_dot_com");
+    await collection.insertMany(tickers);
+
+    res.status(200).json({ message: "Data saved successfully", tickers });
+  } catch (error) {
+    console.error("Error saving prices:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/run", async (req, res) => {
+  try {
+    const url = "https://api.crypto.com/v2/public/get-ticker";
+    const response = await fetch(url);
+    const result = await response.json();
+    console.log("RUNNING RESULT\n\n", result);
+    if (result.code !== 0) {
+      return res
+        .status(500)
+        .json({ error: "*RUNNER*  Failed to fetch crypto prices" });
+    }
+    const tickers = result.result.data.map((ticker) => ({
+      symbol: ticker.i,
+      cost: [[parseFloat(ticker.a), new Date()]],
     }));
 
     // Save to MongoDB
@@ -73,7 +99,7 @@ app.get("/update-prices", async (req, res) => {
     const response = await fetch(url);
     const result = await response.json();
 
-console.log('WORKING RESULT\n\n', result)
+    console.log("WORKING RESULT\n\n", result);
 
     if (result.code !== 0) {
       return res.status(500).json({ error: "Failed to UPDATE crypto prices" });
@@ -81,23 +107,22 @@ console.log('WORKING RESULT\n\n', result)
 
     const tickers = result.result.data.map((ticker) => ({
       symbol: ticker.i,
-      cost: [parseFloat(ticker.a),new Date()]
+      cost: [parseFloat(ticker.a), new Date()],
     }));
 
     // Save to MongoDB
     const collection = db.collection("crypto_dot_com");
-    
-    for(let i = 0; i < tickers.length;i++){
 
-      await collection.findOneAndUpdate({symbol:tickers[i].symbol},{$push:{cost:tickers[i].cost}} ,{returnNewDocument:true});
-
-
+    for (let i = 0; i < tickers.length; i++) {
+      await collection.findOneAndUpdate(
+        { symbol: tickers[i].symbol },
+        { $push: { cost: tickers[i].cost } },
+        { returnNewDocument: true }
+      );
     }
-    
-    
 
     // res.status(200).json({ message: "Data updated successfully", tickers });
-    res.status(200).json({ message: "Data updated successfully"});
+    res.status(200).json({ message: "Data updated successfully" });
   } catch (error) {
     console.error("Error updating prices:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -130,7 +155,9 @@ app.get("/arbitrageGet", async (req, res) => {
     const tickers = result.result.data;
     const pairs = ["BTC_USD", "ETH_BTC", "DOGE_BTC", "DOGE_USD"];
 
-    const filteredPrices = await tickers.filter((ticker) => pairs.includes(ticker.i));
+    const filteredPrices = await tickers.filter((ticker) =>
+      pairs.includes(ticker.i)
+    );
 
     res.json(filteredPrices);
     // res.json(response);

@@ -169,10 +169,10 @@ const CryptoPricesTable = () => {
 
       const data = await response.json();
       console.log("Prices saved successfully:", data);
-    //   alert("Prices saved successfully!");
+      //   alert("Prices saved successfully!");
     } catch (error) {
       console.error("Error saving prices:", error);
-    //   alert("Failed to save prices. Check the console for more details.");
+      //   alert("Failed to save prices. Check the console for more details.");
     }
   };
   const handleCompareClick = async () => {
@@ -206,10 +206,24 @@ const CryptoPricesTable = () => {
 
       // const data = await response.json();
       console.log("updated?");
-      
     } catch (error) {
       console.error("Error Updating prices:", error);
       alert("Failed to Update prices. Check the console for more details.");
+    }
+  };
+  const handleRunClick = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/run", {
+        method: "GET",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      // const data = await response.json();
+      console.log("---Running---");
+    } catch (error) {
+      console.error("Error running:", error);
+      alert("Failed to run.");
     }
   };
   return (
@@ -232,6 +246,12 @@ const CryptoPricesTable = () => {
         style={{ padding: "10px 20px", fontSize: "16px" }}
       >
         -Update Prices-
+      </button>
+      <button
+        onClick={handleRunClick}
+        style={{ padding: "10px 20px", fontSize: "16px" }}
+      >
+        -Run Prices-
       </button>
       {loading && <p>Loading data...</p>}
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
